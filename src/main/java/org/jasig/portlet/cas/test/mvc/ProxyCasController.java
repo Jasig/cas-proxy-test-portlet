@@ -18,12 +18,6 @@
  */
 package org.jasig.portlet.cas.test.mvc;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.portlet.PortletRequest;
-import javax.portlet.RenderRequest;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jasig.cas.client.validation.Assertion;
@@ -33,6 +27,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.ModelAndView;
+
+import javax.portlet.PortletRequest;
+import javax.portlet.RenderRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 
@@ -96,7 +95,7 @@ public final class ProxyCasController {
 			
 			// make sure we can proxy other sites
 			@SuppressWarnings("unused")
-            String proxyTicket2 = assertion.getPrincipal().getProxyTicketFor("http://localhost:8080/");
+            String proxyTicket2 = assertion.getPrincipal().getProxyTicketFor(serviceUrl);
 			model.put("success", true);
 		} catch (TicketValidationException e) {
 			log.error("Exception attempting to validate proxy ticket", e);
