@@ -70,7 +70,7 @@
     -->
     <bean id="ticketValidationFilter" 
         class="org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter"
-        p:serverName="${portal.server.base}" p:redirectAfterValidation="false"
+        p:serverName="${portal.protocol}://${portal.server}/${portlet.context}" p:redirectAfterValidation="false"
         p:proxyReceptorUrl="/proxy/receptor" p:ticketValidator-ref="ticketValidator"
         p:proxyGrantingTicketStorage-ref="proxyGrantingTicketStorage"/>
     
@@ -80,10 +80,10 @@
     -->
     <bean id="ticketValidator" 
         class="org.jasig.cas.client.validation.Cas20ProxyTicketValidator"
-        p:proxyCallbackUrl="${portal.server.base}/${portlet.context}/proxy/receptor"
+        p:proxyCallbackUrl="${portal.protocol}://${portal.instance.server}/${portlet.context}/proxy/receptor"
         p:proxyGrantingTicketStorage-ref="proxyGrantingTicketStorage"
         p:acceptAnyProxy="true">
-        <constructor-arg index="0" value="${cas.server.base.url}" />
+        <constructor-arg index="0" value="${cas.protocol}://${cas.server}${cas.context}" />
     </bean>
 
     <bean id="proxyGrantingTicketStorage" 
