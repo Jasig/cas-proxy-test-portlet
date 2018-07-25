@@ -48,6 +48,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <cas.version>3.1.10</cas.version>
     <spring.version>4.2.5.RELEASE</spring.version>
+    <uportal-libs.version>5.1.0</uportal-libs.version>
   </properties>
   
   <dependencyManagement>
@@ -81,6 +82,37 @@
         <groupId>org.jasig.cas</groupId>
         <artifactId>cas-client-core</artifactId>
         <version>${cas.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jasig.portal</groupId>
+        <artifactId>uPortal-spring</artifactId>
+        <version>${uportal-libs.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.jasig.portal</groupId>
+            <artifactId>uPortal-api-internal</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.jasig.portal</groupId>
+            <artifactId>uPortal-security-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.jasig.portal</groupId>
+            <artifactId>uPortal-security-mvc</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.jasig.portal</groupId>
+            <artifactId>uPortal-tools</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>net.oauth.core</groupId>
+            <artifactId>oauth</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
@@ -135,6 +167,11 @@
       <artifactId>cas-client-core</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.jasig.portal</groupId>
+      <artifactId>uPortal-spring</artifactId>
+    </dependency>
+    
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
